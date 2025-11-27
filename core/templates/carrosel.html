@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrossel Rádio</title>
+  <link rel="stylesheet" href="{% static 'carrosel/css/carrosel.css' %}">
+</head>
+<body>
+
+<div class="carousel">
+
+    {% for carrosel in carrosel_config %}
+        <div class="carousel-slide {% if forloop.first %}active{% endif %}"
+             style="background-image: url('{{ carrosel.imagem.url }}');">
+            <div class="carousel-text">
+                <h1>{{ carrosel.titulo }}</h1>
+                <p>{{ carrosel.texto }}</p>
+            </div>
+        </div>
+    {% endfor %}
+
+    <!-- Controles -->
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+
+    <!-- Indicadores -->
+    <div class="dots">
+        {% for carrosel in carrosel_config %}
+            <span class="dot {% if forloop.first %}active{% endif %}"></span>
+        {% endfor %}
+    </div>
+
+</div>
+
+<script src="{% static 'carrosel/js/script.js' %}"></script>
+
+</body>
+</html>

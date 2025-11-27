@@ -1,0 +1,109 @@
+/* Contêiner principal */
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 90%; */
+  max-width: 1400px;
+  height: 500px; /* define a altura do carrossel */
+  overflow: hidden;
+  margin: 40px auto; /* centraliza na página */
+  border-radius: 25px;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+  background: #000; /* opcional: fundo enquanto as imagens carregam */
+}
+
+/* Slides */
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+}
+
+/* Texto sobreposto */
+.carousel-text {
+  text-align: center;
+  color: white;
+  padding: 30px 50px;
+  border-radius: 15px;
+}
+
+/* Títulos e parágrafos */
+.carousel-text h1 {
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.carousel-text p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+/* Botões laterais */
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+  z-index: 10;
+}
+
+.prev:hover,
+.next:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.prev {
+  left: 15px;
+}
+
+.next {
+  right: 15px;
+}
+
+/* Bolinhas (indicadores) */
+.dots {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dot.active {
+  background: white;
+}
+

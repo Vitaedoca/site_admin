@@ -1,0 +1,39 @@
+
+:root {
+  --primary-color: {{ config.cor_principal }};
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}   
+
+body {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.site-container {
+  width: 100%;              /* ocupa 90% da tela em telas grandes */
+  max-width: 1400px;       /* mas nunca passa de 1200px */
+  margin: 0 auto;          /* centraliza horizontalmente */
+  padding: 0px 20px;    /* espaçamento lateral */
+} 
+
+.base-news {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  margin-top: 150px;
+  gap: 50px;
+}
+
+@media (max-width: 900px) {
+  .base-news {
+    flex-direction: column;
+  }
+}
+

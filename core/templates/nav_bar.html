@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TEST DRIVE FM</title>
+    <link rel="stylesheet" href="{% static 'nav_bar/css/nav_bar.css' %}" />
+
+</head>
+<body>
+    <header class="navbar">
+        {% if config_logo %}
+            <img src="{{ config_logo }}" alt="Logo do site" width="105px">
+        {% endif %}
+
+        
+        <nav>
+        <ul class="nav-links">
+            <li><a href="#">SOBRE NÓS</a></li>
+            <li><a href="#">NOTÍCIAS</a></li>
+            <li><a href="#">PROGRAMAÇÃO</a></li>
+            <li><a href="#">GALERIAS</a></li>
+            <li><a href="#">EVENTOS</a></li>
+            <li><a href="#">VÍDEOS</a></li>
+            <li><a href="#">EQUIPE</a></li>
+            <li><a href="#">PROMOÇÕES</a></li>
+            <li><a href="#">CONTATO</a></li>
+        </ul>
+        </nav>
+        <div class="menu-toggle" id="menu-toggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+    </header>
+
+    <script src="{% static 'nav_bar/js/script.js' %}"></script>
+
+</body>
+</html>

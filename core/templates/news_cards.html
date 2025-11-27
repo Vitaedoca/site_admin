@@ -1,0 +1,52 @@
+<div class="news-cards">
+    {% for item in page_obj %}
+    <div class="news-card">
+        <div class="category-badge" data-color="{{ item.category.color }}">
+            {{ item.category.name }}
+        </div>
+
+        <img src="{{ item.img.url }}" alt="{{ item.title }}">
+
+        <div class="news-content">
+            <div class="icon-news-date">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                     fill="currentColor" class="bi bi-calendar-fill" viewBox="0 0 16 16">
+                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 
+                             1 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 
+                             2H2a2 2 0 0 1-2-2V5h16V4H0V3a2 2 0 0 1 
+                             2-2h1V.5a.5.5 0 0 1 .5-.5"/>
+                </svg>
+                <p class="news-date">{{ item.date|date:"d/m/Y" }}</p>
+            </div>
+
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.desc }}</p>
+
+            <a href="#" class="read-more">Ler mais →</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- PAGINAÇÃO -->
+<nav aria-label="pagination" class="mt-4">
+  <ul class="pagination justify-content-center">
+    {% if page_obj.has_previous %}
+    <li class="page-item">
+      <a class="page-link pagination-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+    </li>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+      <li class="page-item {% if num == page_obj.number %}active{% endif %}">
+          <a class="page-link pagination-link" href="?page={{ num }}">{{ num }}</a>
+      </li>
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+    <li class="page-item">
+      <a class="page-link pagination-link" href="?page={{ page_obj.next_page_number }}">Próxima</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>

@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ noticia.title }}</title>
+
+    <link rel="stylesheet" href="{% static 'news_now/css/news.css' %}">
+</head>
+
+<body>
+
+<div class="news-container">
+
+    <!-- Título -->
+    <h1 class="news-title">{{ noticia.title }}</h1>
+
+    <!-- Data + Categoria -->
+    <div class="news-meta">
+        <span class="news-date">{{ noticia.date|date:"d/m/Y" }}</span>
+
+        {% if noticia.category %}
+        <span class="news-category category-{{ noticia.category.id }}">
+            {{ noticia.category.name }}
+        </span>
+        {% endif %}
+    </div>
+
+    <!-- Conteúdo -->
+    <div class="news-content">
+        {{ noticia.content|safe }}
+    </div>
+
+    <!-- Botões de compartilhamento -->
+    <div class="share-section">
+        <h3>Compartilhar:</h3>
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send?text={{ request.build_absolute_uri }}" 
+           class="share-btn whatsapp"
+           target="_blank">
+            WhatsApp
+        </a>
+
+        <!-- Copiar link -->
+        <button class="share-btn copy" onclick="copyLink()">
+            Copiar Link
+        </button>
+    </div>
+
+    <!-- Últimas Notícias -->
+    <h3 class="latest-title">Últimas 5 notícias</h3>
+
+    <div class="latest-news">
+
+        {% for item in ultimas %}
+        <a href="/noticia/{{ item.slug }}/" class="latest-card">
+            <img src="{{ item.img.url }}" alt="{{ item.title }}">
+            <div class="latest-info">
+                <h4>{{ item.title }}</h4>
+                <p>{{ item.desc|truncatechars:80 }}</p>
+            </div>
+        </a>
+        {% empty %}
+        <p>Sem notícias recentes.</p>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<script>
+function copyLink() {
+    navigator.clipboard.writeText(window.location.href)
+        .then(() => alert("Link copiado!"))
+        .catch(() => alert("Erro ao copiar o link."));
+}
+</script>
+
+</body>
+</html>

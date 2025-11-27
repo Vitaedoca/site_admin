@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'top10/css/top10.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="top10-section">
+        <h2>TOP 10</h2>
+        {% for topMusic in top_music %}
+        <div class="top10-list">
+            <div class="top10-item">
+            <img src="{{ topMusic.foto.url }}" alt="Andy Gunner">
+            <div class="top10-info">
+                <p class="rank">#0{{ topMusic.posicao }}: <span>{{ topMusic.artista }}</span></p>
+                <p class="song">Música: {{ topMusic.musica}}</p>
+            </div>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+      <script src="{% static 'top10/js/script.js' %}"></script>
+
+</body>
+</html>

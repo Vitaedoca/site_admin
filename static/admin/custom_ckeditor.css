@@ -1,0 +1,9 @@
+/* Esconde o campo URL na janela de imagem do CKEditor */
+.cke_dialog_ui_hbox_first input.cke_dialog_ui_input_text {
+    display: none !important;
+}
+
+/* Esconde também o rótulo (label) do campo URL */
+.cke_dialog_ui_hbox_first .cke_dialog_ui_html {
+    display: none !important;
+}

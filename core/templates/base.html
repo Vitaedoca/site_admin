@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Player de Música</title>
+  <link rel="stylesheet" href="{% static 'core/css/core.css' %}" />
+  <link rel="stylesheet" href="{% static 'news/css/news.css' %}">
+  <link rel="stylesheet" href="{% static 'player/css/player.css' %}">
+  <link rel="stylesheet" href="{% static 'gallery/css/gallery.css'%}">
+  <link rel="stylesheet" href="{% static 'videos/css/videos.css'%}">
+  <link rel="stylesheet" href="{% url 'dynamic-css' %}">
+  </style>
+</head>
+<body class="player-{{ position_player }}">
+
+  <div class="site-container">
+
+    <div class="base-player">
+      {% include 'player.html' %}
+    </div>
+
+    <div class="base-nav">
+      {% include 'nav_bar.html' %}
+    </div>
+
+    <div class="base-carrosel">
+      {% include 'carrosel.html' %}
+    </div>
+
+    <div class="base-news">
+
+        <div class="news-section-wrapper">
+            {% include 'news.html' %}
+        </div>
+
+        <div class="top10-section">
+            {% include 'top10.html' %}
+        </div>
+
+    </div>
+
+    <div>
+      {% include 'banner01.html' %}
+    </div>
+
+    <div>
+      {% include 'gallery.html' %}
+    </div>
+      
+  </div>
+
+  </div>
+  <script src="{% static 'core/js/script.js' %}"></script>
+  <script src="{% static 'news/js/script.js' %}"></script>
+  <script src="{% static 'player/js/script.js'%}"></script>
+  <script src="{% static 'videos/js/script.js'%}"></script>
+</body>
+</html>
